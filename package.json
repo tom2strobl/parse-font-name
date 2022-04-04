@@ -1,7 +1,7 @@
 {
   "name": "parse-font-name",
   "version": "0.1.0",
-  "description": "Extract numeric font weight and font style from a font name.",
+  "description": "Extract font weight (in steps of spec-valid 100s) and style (italic) data from the name of a font in a more robust way than most libraries do.",
   "main": "lib/index.js",
   "author": {
     "name": "Thomas Strobl",
