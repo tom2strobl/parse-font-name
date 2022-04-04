@@ -1,0 +1,52 @@
+{
+  "name": "parse-font-name",
+  "version": "0.1.0",
+  "description": "Extract numeric font weight and font style from a font name.",
+  "main": "lib/index.js",
+  "author": {
+    "name": "Thomas Strobl",
+    "email": "thomas@thomas-strobl.com",
+    "url": "https://thomas-strobl.com"
+  },
+  "scripts": {
+    "build": "tsc --declaration src/index.ts --outDir lib",
+    "test": "jest --config jest.json --coverage",
+    "benchmark": "node benchmark/index.js"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/index.d.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tom2strobl/parse-font-name.git"
+  },
+  "keywords": [
+    "font-weight",
+    "font-style",
+    "fonts",
+    "typefaces",
+    "font",
+    "typeface",
+    "typed"
+  ],
+  "license": "MIT",
+  "np": {
+    "2fa": false
+  },
+  "bugs": {
+    "url": "https://github.com/tom2strobl/parse-font-name/issues"
+  },
+  "homepage": "https://github.com/tom2strobl/parse-font-name#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "babel-jest": "^27.5.1",
+    "benny": "^3.7.1",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.2",
+    "typescript": "^4.6.3"
+  }
+}

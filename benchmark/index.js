@@ -1,0 +1,2 @@
+require('./weight')
+require('./style')

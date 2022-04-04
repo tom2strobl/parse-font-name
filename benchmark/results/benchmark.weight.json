@@ -1,0 +1,21 @@
+{
+  "name": "parseNumericWeightFromName Benchmark",
+  "date": "2022-04-04T14:14:57.953Z",
+  "version": "1.0.0",
+  "results": [
+    {
+      "name": "parseNumericWeightFromName from 100 font strings",
+      "ops": 952,
+      "margin": 1.45,
+      "percentSlower": 0
+    }
+  ],
+  "fastest": {
+    "name": "parseNumericWeightFromName from 100 font strings",
+    "index": 0
+  },
+  "slowest": {
+    "name": "parseNumericWeightFromName from 100 font strings",
+    "index": 0
+  }
+}

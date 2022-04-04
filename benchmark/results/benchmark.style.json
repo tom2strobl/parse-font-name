@@ -1,0 +1,21 @@
+{
+  "name": "parseStyleFromName Benchmark",
+  "date": "2022-04-04T14:15:03.429Z",
+  "version": "1.0.0",
+  "results": [
+    {
+      "name": "parseStyle from 100 font strings",
+      "ops": 95480,
+      "margin": 1.16,
+      "percentSlower": 0
+    }
+  ],
+  "fastest": {
+    "name": "parseStyle from 100 font strings",
+    "index": 0
+  },
+  "slowest": {
+    "name": "parseStyle from 100 font strings",
+    "index": 0
+  }
+}
