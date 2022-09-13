@@ -56,7 +56,7 @@ See `src/index.test.js` for more examples and `src/index.ts` for types.
 
 ## Performance
 
-`parseNumericWeightFromName` from 100 font strings `965 ops/s, ±3.64%`
-`parseStyle` from 100 font strings `96 647 ops/s, ±0.81%`
+`parseNumericWeightFromName` from 100 font strings `1 134 ops/s, ±0.62%`
+`parseStyle` from 100 font strings `104 468 ops/s, ±0.13%`
 
 Which is something that could be improved, but so far I didn't need to parse 100 fonts more than a thousand times a second, so whatever.

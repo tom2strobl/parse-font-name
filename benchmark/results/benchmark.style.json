@@ -1,12 +1,12 @@
 {
   "name": "parseStyleFromName Benchmark",
-  "date": "2022-04-04T14:15:03.429Z",
+  "date": "2022-09-13T12:08:39.379Z",
   "version": "1.0.0",
   "results": [
     {
       "name": "parseStyle from 100 font strings",
-      "ops": 95480,
-      "margin": 1.16,
+      "ops": 104468,
+      "margin": 0.13,
       "percentSlower": 0
     }
   ],

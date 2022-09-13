@@ -1,4 +1,7 @@
+import { getStringDistance } from './levenshtein'
+
 // raw map data export in case you want to manually do stuff with it
+
 // I compiled this list from various sources including adobe, microsoft, java standard libraries and added lots of custom weights I encountered
 export const numericFontWeightMap = {
   100: ['Thin', 'UltraThin', 'ExtraThin', 'Hairline', 'Flyweight'],
@@ -38,13 +41,22 @@ export function parseNumericWeightFromName(fontStrings: string | string[], fallb
     // convert map to multi-dimensional array to work better
     const fontMap = Object.entries(numericFontWeightMap)
     // find all matching weights
-    const weight = fontMap
-      // filter out all the font weights that match the font string
-      .filter((pair) => pair[1].some((value) => new RegExp(value.toLowerCase(), 'i').test(item.toLowerCase())))
-      // and return the numeric value
-      .map((each) => +each[0])
-    // if we have one ore more matches, return the highest match, otherwise return the fallbackValue
-    return weight.length ? Math.max(...weight) : fallbackValue
+    const weights: [string, number][] = fontMap
+      // filter out all the font weights that match the font string; Note using RegExp.test yields false positives
+      .filter((pair) => pair[1].some((value) => item.includes(value)))
+      // get the closest distance of the matches
+      .map((pair) => {
+        const [numeric, names] = pair
+        const distances = names.map((name) => getStringDistance(item, name) as number)
+        return [numeric, Math.min(...distances)]
+      })
+    // if we have one ore more matches, return the one with the lowest distance (Light is further away from ExtraLight than ExtraLight)
+    if (weights.length) {
+      const [closestNumeric] = weights.reduce((a, b) => (a[1] < b[1] ? a : b))
+      return parseInt(closestNumeric, 10)
+    }
+    // otherwise return the fallback value
+    return fallbackValue
   })
   // return single value if only one font string provided
   return results.length === 1 ? (results.pop() as number) : results
