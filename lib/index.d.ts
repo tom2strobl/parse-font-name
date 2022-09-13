@@ -1,4 +1,4 @@
-export declare const numericFontWeightMap: {
+declare const numericFontWeightMap: {
     readonly 100: readonly ["Thin", "UltraThin", "ExtraThin", "Hairline", "Flyweight"];
     readonly 200: readonly ["ExtraLight", "ExtraLite", "UltraLight", "Extraleicht", "Bantamweight"];
     readonly 300: readonly ["Light", "Lite", "Leicht", "Blond", "Featherweight"];
@@ -9,11 +9,12 @@ export declare const numericFontWeightMap: {
     readonly 800: readonly ["ExtraBold", "UltraBold", "Heavyweight"];
     readonly 900: readonly ["Black", "Heavy", "ExtraBlack", "UltraBlack", "Fat", "Poster", "Extrafett", "Sumo"];
 };
-export declare function parseNumericWeightFromName(fontStrings: string[], fallbackValue?: number): number[];
-export declare function parseNumericWeightFromName(fontStrings: string, fallbackValue?: number): number;
+declare function parseNumericWeightFromName(fontStrings: string[], fallbackValue?: number): number[];
+declare function parseNumericWeightFromName(fontStrings: string, fallbackValue?: number): number;
 declare type FontStyleCSSString = 'normal' | 'oblique' | 'italic';
-export declare function parseStyleFromName(fontStrings: string, format?: 'cssString', fallbackValue?: FontStyleCSSString): FontStyleCSSString;
-export declare function parseStyleFromName(fontStrings: string[], format?: 'cssString', fallbackValue?: FontStyleCSSString): FontStyleCSSString[];
-export declare function parseStyleFromName(fontStrings: string, format?: 'boolean', fallbackValue?: boolean): boolean;
-export declare function parseStyleFromName(fontStrings: string[], format?: 'boolean', fallbackValue?: boolean): boolean[];
-export {};
+declare function parseStyleFromName(fontStrings: string, format?: 'cssString', fallbackValue?: FontStyleCSSString): FontStyleCSSString;
+declare function parseStyleFromName(fontStrings: string[], format?: 'cssString', fallbackValue?: FontStyleCSSString): FontStyleCSSString[];
+declare function parseStyleFromName(fontStrings: string, format?: 'boolean', fallbackValue?: boolean): boolean;
+declare function parseStyleFromName(fontStrings: string[], format?: 'boolean', fallbackValue?: boolean): boolean[];
+
+export { numericFontWeightMap, parseNumericWeightFromName, parseStyleFromName };

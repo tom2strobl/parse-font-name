@@ -10,6 +10,7 @@ Recognizing weights and styles of 100% of font names is obviously impossible, bu
 - *fully typed* in typescript
 - *100%* code test *coverage* (100% Statements 28/28, 100% Branches 36/36, 100% Functions 7/7, 100% Lines 27/27)
 - *small* footprint (2.2kb minified)
+- CommonJS bundle, .mjs bundle, .d.ts bundle + type-checking & Source maps
 - written in an actually readable way
 
 ## Installation
