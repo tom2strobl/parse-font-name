@@ -5,6 +5,9 @@ import { parseNumericWeightFromName, parseStyleFromName } from './'
 test('numeric weight: parse single string value into single number', () => {
   expect(parseNumericWeightFromName('Helvetica Neue Light')).toEqual(300)
 })
+test('numeric weight: parse string with extension', () => {
+  expect(parseNumericWeightFromName('Helvetica Neue Light.ttf')).toEqual(300)
+})
 test('numeric weight: fall back on no match to custom fallback', () => {
   expect(parseNumericWeightFromName('Akkurat Pro', 700)).toEqual(700)
 })
