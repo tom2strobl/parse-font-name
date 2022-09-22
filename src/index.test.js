@@ -1,4 +1,5 @@
 import { parseNumericWeightFromName, parseStyleFromName } from './'
+import { compareTwoStrings } from './dice'
 
 // numeric weight
 
@@ -37,6 +38,24 @@ test('numeric weight: halbfett not triggering 700', () => {
 })
 test('numeric weight: supplying no args throws', () => {
   expect(() => parseNumericWeightFromName()).toThrow('no fontStrings provided')
+})
+test('numeric weight: not triggering 400', () => {
+  expect(parseNumericWeightFromName('centurygothic_bold')).toEqual(700)
+})
+test('numeric weight: not triggering 400', () => {
+  expect(parseNumericWeightFromName('MYRIADPRO-BOLDCONDIT')).toEqual(700)
+})
+test('numeric weight: not triggering 400', () => {
+  expect(parseNumericWeightFromName('MYRIADPRO-SEMIBOLDIT')).toEqual(600)
+})
+test('numeric weight: parse the numeric weight in the filename if no exact match was found', () => {
+  expect(parseNumericWeightFromName('alegreya-v29-latin-500')).toEqual(500)
+})
+test('numeric weight: direct weight', () => {
+  expect(parseNumericWeightFromName('Bold')).toEqual(700)
+})
+test('numeric weight: doesnt trip on single letter input', () => {
+  expect(parseNumericWeightFromName('a')).toEqual(400)
 })
 
 // style
@@ -84,4 +103,10 @@ test('style: parse array value with mixed results cssString', () => {
 })
 test('style: supplying no args throws', () => {
   expect(() => parseStyleFromName()).toThrow('no fontStrings provided')
+})
+
+// for 100% coverage
+
+test('dice: too short strings return 0', () => {
+  expect(compareTwoStrings('b', 'c')).toEqual(0)
 })

@@ -1,4 +1,4 @@
-import { getStringDistance } from './levenshtein'
+import { compareTwoStrings } from './dice'
 
 // raw map data export in case you want to manually do stuff with it
 
@@ -38,22 +38,30 @@ export function parseNumericWeightFromName(fontStrings: string | string[], fallb
   }
   // iterate over the input
   const results = fontStrings.map((item) => {
+    // matches if in the string there is a full number of 100-900, no X50 and no 1000
+    // 1-9 means no 0 at the start, 00 means always followed by exactly two zeroes
+    // and \b matches a word boundary, so 4th digits, end of lines or other chars are not matched
+    const tripleDigitInName = item.match(/[1-9]00\b/gi)
     // convert map to multi-dimensional array to work better
     const fontMap = Object.entries(numericFontWeightMap)
     // find all matching weights
     const weights: [string, number][] = fontMap
       // filter out all the font weights that match the font string; Note using RegExp.test yields false positives
-      .filter((pair) => pair[1].some((value) => item.includes(value)))
+      .filter((pair) => pair[1].some((value) => item.toLowerCase().includes(value.toLowerCase())))
       // get the closest distance of the matches
       .map((pair) => {
         const [numeric, names] = pair
-        const distances = names.map((name) => getStringDistance(item, name) as number)
+        const distances = names.map((name) => compareTwoStrings(item, name) as number)
         return [numeric, Math.min(...distances)]
       })
-    // if we have one ore more matches, return the one with the lowest distance (Light is further away from ExtraLight than ExtraLight)
+    // if we have one or more matches, return the one with the highest similarity
     if (weights.length) {
-      const [closestNumeric] = weights.reduce((a, b) => (a[1] < b[1] ? a : b))
+      const [closestNumeric] = weights.reduce((a, b) => (a[1] < b[1] ? b : a))
       return parseInt(closestNumeric, 10)
+      // if there was no string match...
+    } else if (tripleDigitInName && tripleDigitInName.length > 0) {
+      // ...and we have a triple digit number in the name, return that
+      return parseInt(tripleDigitInName[0], 10)
     }
     // otherwise return the fallback value
     return fallbackValue

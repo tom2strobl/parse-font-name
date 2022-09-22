@@ -1,12 +1,12 @@
 {
   "name": "parseNumericWeightFromName Benchmark",
-  "date": "2022-09-13T12:08:33.896Z",
+  "date": "2022-09-22T12:10:52.636Z",
   "version": "1.0.0",
   "results": [
     {
       "name": "parseNumericWeightFromName from 100 font strings",
-      "ops": 1134,
-      "margin": 0.62,
+      "ops": 583,
+      "margin": 0.63,
       "percentSlower": 0
     }
   ],
